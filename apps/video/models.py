@@ -1,3 +1,4 @@
+from django.contrib.auth.models import User
 from django.db import models
 
 # Create your models here.
@@ -6,7 +7,7 @@ class Video(models.Model):
     description = models.TextField(max_length=50)
     slug = models.SlugField(max_length=50)
     created_at = models.DateTimeField(auto_now=True) #dame la fecha cuando se crea el registro
-
+    user = models.OneToOneField(User,on_delete=models.CASCADE) #relación uno a uno con usuario
     def __str__(self):
         return self.title
 
